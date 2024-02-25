@@ -1,48 +1,35 @@
-'use client'
-
+import React from 'react'
 import { URLShorted } from '@/types/url.model'
-import React, { useState } from 'react'
-import { Button, Card, CardBody, CardHeader, Snippet, Tooltip } from '@nextui-org/react'
-import Image from 'next/image'
+import { Card, CardBody, CardHeader } from '@nextui-org/react'
+
+import CardActions from './CardActions'
+import { CLIENT_URL } from '@/utils/constants'
 
 type Props = {
   url: URLShorted
 }
 
 const CardURL = ({url}: Props) => {
-  const { short_url, long_url, clicks } = url
-  const [copied, setCopied] = useState<boolean>(false)
+  const { short_url, original_url, clicks } = url
 
-  const onCopy = () => {
-    navigator.clipboard.writeText(short_url).then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000);
-    })
-  }
-  
+  const long =  original_url.split('://').at(-1)
+  const short = `${CLIENT_URL}/${short_url}/`
   
   return (
-    <Card className='p-4 bg-opacity-25 hover:scale-[102%] transition-transform min-w-0'>
+    <Card className='p-4 bg-opacity-25 hover:scale-[102%] transition-transform min-w-72'>
       <CardHeader>
-        <a className='hover:underline text-ellipsis whitespace-nowrap overflow-hidden' href={long_url} target='_blank'>{long_url}</a>
+          <a className='hover:underline text-ellipsis whitespace-nowrap overflow-hidden' href={long} target='_blank'>{long}</a>
       </CardHeader>
       <CardBody className='flex-row gap-3'>
-        <div className='grow'>
-          <a href={short_url} target='_blank' className='block font-bold hover:underline'>{short_url}</a>
-          {clicks !== undefined && <span className='block text-xs mt-1 font-semibold'>{clicks} click{clicks !== 1 ? 's' : ''}</span>}
+        <div className='flex flex-col grow'>
+          <a href={short} target='_blank' className='font-bold hover:underline'>{short}</a>
+          { clicks !== undefined && 
+            <span className='text-xs mt-1 font-semibold'>
+              {clicks} click{clicks !== 1 ? 's' : ''}
+            </span>
+          }
         </div>
-        <div className='flex items-center gap-2'>
-        <Snippet hideSymbol tooltipProps={{placement: 'bottom', offset: 8}} classNames={{
-          pre: "hidden",
-          base: "p-0 w-10 h-10 justify-center",
-          copyButton: "w-full h-full"
-        }}></Snippet>
-        <Tooltip content="Download QR" placement='bottom'>
-          <Button isIconOnly className='bg-default/60'>
-            <Image src='/qr-code.svg' alt='Copy URL' width={20} height={20} />
-          </Button>
-        </Tooltip>
-      </div>
+        <CardActions short={short} />
       </CardBody>
     </Card>
   )

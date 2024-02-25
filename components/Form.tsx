@@ -1,8 +1,10 @@
 'use client'
 
+import { createShortURL } from '@/lib/actions'
 import { isValidURL } from '@/utils'
 import { Button, Input } from '@nextui-org/react'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
+import { useFormStatus } from 'react-dom'
 
 const Form = () => {
   const [inputValue, setInputValue] = useState<string>('')
@@ -11,15 +13,23 @@ const Form = () => {
   const [onFocus, setOnFocus] = useState<boolean>(false)
 
   const showError = isDirty && hasError && !onFocus
+  const ref = useRef<HTMLFormElement>(null)
 
   const handleChanges = (value: string) => {
     setInputValue(value)
     setHasError(!isValidURL(value))
   }
 
+  const formAction = async (formData: FormData) => {
+    await createShortURL(formData)
+    ref.current?.reset()
+    setIsDirty(false)
+  }
+
   return (
-    <form className={`w-[50%] min-w-80 max-w-[640px] flex gap-2 items-stretch ${!showError ? 'mb-4' : ''}`}>
+    <form ref={ref} className={`w-[50%] min-w-80 max-w-[640px] flex gap-2 items-stretch ${!showError ? 'mb-4' : ''}`} action={formAction} >
       <Input
+        name='longURL'
         className='w-full'
         classNames={{
           input: [
@@ -38,7 +48,6 @@ const Form = () => {
             "!cursor-text",
           ],
         }}
-        type="url"
         size='lg'
         color='primary'
         placeholder='Enter a link to shorten it'
@@ -51,10 +60,16 @@ const Form = () => {
         value={inputValue}
         variant='faded'
         />
-        <Button isDisabled={hasError} size='lg' color='primary' type='submit'> Shorten </Button>
+        <SubmitButton isDisabled={hasError} />
     </form>
-
   )
 }
 
 export default Form
+
+const SubmitButton = ({ isDisabled } : { isDisabled: boolean } = { isDisabled: true } ) => {
+  const { pending } = useFormStatus()
+  return (
+    <Button isDisabled={isDisabled} isLoading={pending} size='lg' color='primary' type='submit'> Shorten </Button>
+  )
+}

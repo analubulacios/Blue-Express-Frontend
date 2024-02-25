@@ -6,4 +6,26 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  @keyframes fade {
+    from {
+      background-color: #fff;
+      backdrop-filter: blur(0px);
+    }
+    to {
+      background-color: #f00;
+      backdrop-filter: blur(8px);
+    }
+  }
+
+  .scroll-anim {
+    /* view-timeline-name: --scroll;
+    view-timeline-axis: root block; */
+
+    animation-timeline: scroll(block);
+    animation-name: fade;
+    /* animation-fill-mode: both; */
+    animation-range: 10vh 50vh;
+  }
 }
+

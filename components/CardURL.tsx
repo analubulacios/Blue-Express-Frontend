@@ -22,9 +22,9 @@ const CardURL = ({url}: Props) => {
   
   
   return (
-    <Card className='p-4 bg-opacity-25 hover:scale-[102%] transition-transform'>
+    <Card className='p-4 bg-opacity-25 hover:scale-[102%] transition-transform min-w-0'>
       <CardHeader>
-        <a className='hover:underline' href={long_url} target='_blank'>{long_url}</a>
+        <a className='hover:underline text-ellipsis whitespace-nowrap overflow-hidden' href={long_url} target='_blank'>{long_url}</a>
       </CardHeader>
       <CardBody className='flex-row gap-3'>
         <div className='grow'>

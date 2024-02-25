@@ -1,10 +1,11 @@
 import React from 'react'
+import GoogleLogin from './GoogleLogin'
 
 const Header = () => {
   return (
-    <header className='flex justify-between items-center w-full h-16 max-w-[1440px] px-10 mx-auto fixed'>
+    <header className='flex justify-between items-center w-full h-16 max-w-[1280px] px-4 fixed left-[50%] translate-x-[-50%]'>
       <span></span>
-      <span className="font-bold text-gray-900">Login</span>
+      <GoogleLogin />
     </header>
   )
 }

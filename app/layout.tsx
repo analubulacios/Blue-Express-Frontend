@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import { Providers } from "@/components/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata: Metadata = {
   title: "URL Shortener | Ana Lucia Bulacios",
@@ -16,10 +18,12 @@ export default function RootLayout({ children }: Readonly<{
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-          {children}
-        </main>
+        <Providers>
+          <Header />
+          <main className="flex min-h-screen flex-col items-center p-24 gap-24 max-w-[1280px] mx-auto">
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   );

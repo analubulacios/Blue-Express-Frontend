@@ -15,7 +15,7 @@ export async function getToken() {
   const localURLs = getLocalURLs()
   const { token } = await fetch(`${API_URL}/user/login`, {
     method: "POST",
-    body: JSON.stringify({ email: session.user.email, localURLs })
+    body: JSON.stringify({ email: session?.user.email, localURLs })
   }).then(res => res.json())
 
   return token

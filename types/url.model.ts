@@ -1,5 +1,5 @@
 export interface URLShorted {
-  id: string
+  url_id: string
   original_url: string
   short_url: string
   createdAt: string

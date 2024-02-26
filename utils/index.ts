@@ -17,9 +17,15 @@ export function withHttp(url: string) {
   return url
 }
 
+export function withoutHttp(url: string) {
+  if(url?.startsWith('http')) {
+    return url.split('://').at(-1)
+  }
+  return url
+}
+
 // Simula ralentizaciones en operaciones asincronas
 export const wait = (n: number) => new Promise((resolve) => setTimeout(resolve, n));
-
 
 export const sortDate = (a: URLShorted, b: URLShorted) => {
   const dateA = new Date(a.createdAt);

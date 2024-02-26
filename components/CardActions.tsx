@@ -1,14 +1,12 @@
 'use client'
 
 import React from 'react'
-import Image from 'next/image'
 import { Snippet, Tooltip, Button } from '@nextui-org/react'
+import DeleteIcon from '@/assets/DeleteIcon'
+import { deleteShortURL } from '@/lib/actions'
 
-type Props = {
-  short: string
-}
 
-const CardActions = ({short}: Props) => {
+const CardActions = ({short, id}: {short: string, id: string}) => {
   return (
     <div className='flex items-center gap-2'>
       <Snippet hideSymbol codeString={short} tooltipProps={{placement: 'bottom', offset: 8}} classNames={{
@@ -16,9 +14,9 @@ const CardActions = ({short}: Props) => {
         base: "p-0 w-10 h-10 justify-center",
         copyButton: "w-full h-full"
       }}/>
-      <Tooltip content="Download QR" placement='bottom'>
-        <Button isIconOnly className='bg-default/60'>
-          <Image src='/qr-code.svg' alt='Copy URL' width={20} height={20} />
+      <Tooltip content="Delete short URL" placement='bottom'>
+        <Button isIconOnly variant="light" className='bg-default/60' color='danger' onClick={() => deleteShortURL(id)}>
+          <DeleteIcon />
         </Button>
       </Tooltip>
     </div>

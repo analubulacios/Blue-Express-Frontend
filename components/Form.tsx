@@ -12,8 +12,8 @@ const Form = () => {
   const [isDirty, setIsDirty] = useState<boolean>(false)
   const [onFocus, setOnFocus] = useState<boolean>(false)
 
-  const showError = isDirty && hasError && !onFocus
   const ref = useRef<HTMLFormElement>(null)
+  const showError = inputValue.length > 0 && isDirty && hasError && !onFocus
 
   const handleChanges = (value: string) => {
     setInputValue(value)
@@ -27,7 +27,7 @@ const Form = () => {
   }
 
   return (
-    <form ref={ref} className={`w-[50%] min-w-80 max-w-[640px] flex gap-2 items-stretch ${!showError ? 'mb-4' : ''}`} action={formAction} >
+    <form ref={ref} action={formAction} className={`w-[50%] min-w-80 max-w-[640px] flex gap-2 items-stretch ${!showError ? 'mb-4' : ''}`} >
       <Input
         name='longURL'
         className='w-full'

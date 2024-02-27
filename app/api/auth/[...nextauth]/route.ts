@@ -1,14 +1,13 @@
-import { getLocalURLs } from "@/lib/cookie";
-import { API_URL } from "@/utils/constants";
-import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import Google from "next-auth/providers/google";
 
-export const authOptions: NextAuthOptions = {
+const { GOOGLE_CLIENT_SECRET = '', GOOGLE_CLIENT_ID = '' } = process.env;
+
+export const authOptions = {
   providers: [
     Google({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      clientId: GOOGLE_CLIENT_ID!,
+      clientSecret: GOOGLE_CLIENT_SECRET!,
       authorization: {
         params: {
           prompt: "consent",

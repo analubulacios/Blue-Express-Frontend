@@ -48,7 +48,7 @@ export async function getAllShortURLs(): Promise<URLShorted[]> {
   const userURLs = await fetchShortURLs()
   const localURLs = getLocalURLs()
 
-  return uniquesURLs([...userURLs, ...localURLs].sort(sortDate))
+  return uniquesURLs([...localURLs,...userURLs].sort(sortDate))
 }
 
 export async function fetchShortURLs(): Promise<URLShorted[]> {
@@ -67,6 +67,10 @@ export async function fetchShortURLs(): Promise<URLShorted[]> {
   if(!res.ok) return []
 
   return res.json()
+}
+
+export const _revalidateTag = (tag: string) => {
+  revalidateTag(tag);
 }
 
 export async function deleteShortURL(id: string): Promise<void> {

@@ -7,7 +7,7 @@ const layout = ({ children }: Readonly<{
   return (
     <>
       <Header />
-      <main className="flex min-h-screen flex-col items-center py-24 px-4 gap-24 max-w-[1280px] mx-auto">
+      <main className="flex min-h-screen flex-col items-center py-24 px-4 gap-16 max-w-[1280px] mx-auto">
         {children}
       </main>
     </>

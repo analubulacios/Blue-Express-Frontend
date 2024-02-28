@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Challenge-Blue-Express: Desafío de Contratación Platform Engineer
 
-## Getting Started
+## Descripción
 
-First, run the development server:
+Este repositorio contiene el frontend de la aplicación de acortador de URL, desarrollado con Next.js y otras tecnologías para ofrecer una interfaz de usuario interactiva y amigable.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Estructura del Repositorio
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **main:** Rama principal del repositorio.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Versiones de Dependencias y Herramientas Utilizadas:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Dependencias del Proyecto
+- **@nextui-org/react:** ^2.2.9
+- **framer-motion:** ^11.0.5
+- **next:** 14.1.0
+- **next-auth:** ^4.24.6
+- **react:** ^18
+- **react-dom:** ^18
 
-## Learn More
+Estas son las dependencias específicas utilizadas en el proyecto para el desarrollo del frontend.
 
-To learn more about Next.js, take a look at the following resources:
+### Dependencias de Desarrollo:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+A continuación, se presentan las dependencias de desarrollo utilizadas en el proyecto:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **@types/node:** ^20
+- **@types/react:** ^18
+- **@types/react-dom:** ^18
+- **autoprefixer:** ^10.0.1
+- **eslint:** ^8
+- **eslint-config-next:** 14.1.0
+- **postcss:** ^8
+- **tailwindcss:** ^3.3.0
+- **typescript:** ^5
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Instrucciones de Uso
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Antes de ejecutar el proyecto, asegúrate de seguir estos pasos:
+
+1. **Carga de Variables de Entorno:**
+   - Crea un archivo `.env` en la raíz del proyecto y proporciona los valores necesarios.
+
+2. **Instalación de Dependencias, Compilación y Ejecución del Proyecto:**
+   ```bash
+   npm install && npm run build && npm run dev && npm start 
+
+
+

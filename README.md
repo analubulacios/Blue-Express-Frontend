@@ -40,7 +40,7 @@ A continuación, se presentan las dependencias de desarrollo utilizadas en el pr
 Antes de ejecutar el proyecto, asegúrate de seguir estos pasos:
 
 1. **Carga de Variables de Entorno:**
-   - Crea un archivo `.env` en la raíz del proyecto y proporciona los valores necesarios.
+   - Crea un archivo `.env` en la raíz del proyecto y proporciona los valores de las variables.
 
 2. **Instalación de Dependencias, Compilación y Ejecución del Proyecto:**
    ```bash
